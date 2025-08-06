@@ -120,9 +120,13 @@ document.addEventListener("DOMContentLoaded", () => {
       if (!confirm(`Remove ${email} from ${activity}?`)) return;
       try {
         const response = await fetch(
-          `/activities/${encodeURIComponent(activity)}/unregister?email=${encodeURIComponent(email)}`,
+          `/activities/${encodeURIComponent(activity)}/unregister`,
           {
             method: "POST",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ email }),
           }
         );
         const result = await response.json();

@@ -123,6 +123,9 @@ async def signup_for_activity(activity_name: str, email: str):
     if email in activity["participants"]:
         raise HTTPException(status_code=400, detail="Student is already signed up")
 
+    # Check if activity is full
+    if len(activity["participants"]) >= activity.get("max_capacity", float('inf')):
+        raise HTTPException(status_code=400, detail="Activity is full")
     # Add student
     result = await activities_collection.update_one(
         {"_id": activity_name},

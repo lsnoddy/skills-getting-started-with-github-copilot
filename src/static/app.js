@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 ${details.participants.map(email => `
                   <li class="participant-item">
                     <span>${email}</span>
-                    <button class="delete-participant" title="Remove participant" data-activity="${encodeURIComponent(name)}" data-email="${encodeURIComponent(email)}">&#128465;</button>
+                    <button class="delete-participant" title="Remove participant" aria-label="Remove participant" data-activity="${encodeURIComponent(name)}" data-email="${encodeURIComponent(email)}">&#128465;</button>
                   </li>
                 `).join("")}
               </ul>
